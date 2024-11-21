@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EcoShop - Your trusted platform for sustainable and eco-friendly products.">
+    <title>EcoShop | Sustainable Products</title>
+    <style>
+        /* General Styles */
+
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            color: #3b3b3b; /* Dark brown for text */
+            background-color: #f5f5f0; /* Light beige background */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #4d804d; /* Dark green */
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header .logo h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        header nav ul li {
+            margin: 0 15px;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        header nav ul li a:hover {
+            color: #d9d9d9; /* Light gray */
+        }
+
+        .logout-button {
+            background-color: #115101; /* Darker green */
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .logout-button:hover {
+            background-color: #970202; /* Red */
+        }
+
+        /* Main Content Sections */
+        main {
+            text-align: center; /* Centers the text inside */
+            padding: 20px;
+        }
+
+        /* Section Style */
+        section {
+            padding: 30px;
+            background-color: #f0e6d6; /* Light brown/tan */
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        section:hover {
+            transform: translateY(-5px); /* Slight lift on hover */
+        }
+
+        section h2 {
+            color: #4d804d; /* Dark green */
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        /* Home Section */
+        #home h1 {
+            color: #4d804d; /* Dark green */
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        #home p {
+            font-size: 18px;
+            color: #3b3b3b;
+            margin-bottom: 20px;
+        }
+
+        /* Shop Section */
+        #shop {
+            padding: 20px;
+        }
+
+        .shop-list {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap; /* Wrap items on smaller screens */
+        }
+
+        .shop-item {
+            text-align: center;
+            color: #4d804d; /* Dark green */
+            transition: transform 0.3s;
+        }
+
+        .shop-item:hover {
+            transform: scale(1.05); /* Scale up on hover */
+        }
+
+        .shop-item h3 {
+            margin-top: 10px;
+            font-size: 20px;
+        }
+
+        .shop-item p {
+            color: #3b3b3b; /* Dark brown */
+        }
+
+        /* Educational Hub Section */
+        .education-content {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .education-card {
+            background-color: #e5d3b3; /* Light brown */
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px); /* Slight lift on hover */
+        }
+
+        .education-card h3 {
+            color: #4d804d;
+            font-size: 20px;
+        }
+
+        .education-card p {
+            color: #3b3b3b;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 16px;
+            background-color: #4d804d;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #3b6b3b; /* Darker green on hover */
+        }
+
+        /* Newsletter Section */
+        #newsletter {
+            padding: 20px;
+            background-color: #f0e6d6; /* Light brown */
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        #newsletter button {
+            background-color: #4d804d; /* Dark green button */
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px; /* Add margin above the button */
+            transition: background-color 0.3s;
+        }
+
+        #newsletter button:hover {
+            background-color: #3b6b3b; /* Darker green on hover */
+        }
+
+        /* About and Contact Section */
+        #about-contact {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #e5d3b3; /* Light brown */
+        }
+
+        .about-section, .contact-section {
+            width: 45%;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+        }
+
+        /* Divider Style */
+        .divider {
+            height: 4px;
+            background-color: #4d804d; /* Dark green */
+            margin: 20px auto;
+            width: 90%;
+            border-radius: 2px;
+        }
+
+        /* Footer Styles */
+        footer {
+            text-align: center;
+            padding: 15px;
+            background-color: #4d804d;
+            color: white;
+        }
+
+        /* Slideshow Container */
+        .slideshow-container {
+            position: relative;
+            max-width: 100%;
+            height: 769px;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        /* Slideshow Image */
+        .mySlides {
+            display: none;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        /* Slide Transition */
+        .fade {
+            animation: fadeEffect 1.5s;
+        }
+
+        @keyframes fadeEffect {
+            from {opacity: 0.4;}
+            to {opacity: 1;}
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <h1>EcoShop</h1>
+        </div> 
+        <nav>
+            <ul>
+                <li><a href="website.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="educational_hub.html">Education Hub</a></li>
+                <li><a href="#about-contact">About Us</a></li>
+                <li><a href="#about-contact">Contact Us</a></li>
+                <li><a href="index.html" class="logout-button">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Section -->
+        <section id="home">
+            <h1>Welcome to EcoShop</h1>
+            <p>Your one-stop shop for sustainable, eco-friendly products that help protect our planet.</p>
+            <div class="slideshow-container">
+                <img class="mySlides fade" src="/website/cropped-helpsavenature.jpg" width="1184" height="769" alt="EcoShop Product 1">
+                <img class="mySlides fade" src="/website/image.jpeg" width="1184" height="769" alt="EcoShop Product 2">
+                <img class="mySlides fade" src="/website/hand.webp" width="1184" height="769" alt="EcoShop Product 2">
+           </div>
+        </section>
+
+        <!-- Shop Section -->
+        <section id="shop">
+            <h2>Shop</h2>
+            <h3>Eco-Friendly Products for a Better Tomorrow</h3>
+            <div class="shop-list">
+                <div class="shop-item">
+                    <img src="/website/image 1.jpg" width="180" height="120" alt="Accessories">
+                    <h3>Accessories</h3>
+                    <p>Made from recycled materials.</p>
+                </div>
+                <div class="shop-item">
+                    <img src="/website/image 2.jpg" width="180" height="120" alt="Groceries">
+                    <h3>Groceries</h3>
+                    <p>Everyday items.</p>
+                </div>
+                <div class="shop-item">
+                    <img src="/website/image 3 kedua.jpg" width="180" height="120" alt="Hardware">
+                    <h3>Hardware</h3>
+                    <p>Essential eco-friendly tools.</p>
+ 
+                </div>
+            </div>
+            <p>Join us in our mission to protect the planet with sustainable choices.</p>
+            <a href="shop.html" class="cta-button">Shop Now</a>
+        </section>
+
+        <!-- Educational Hub Section -->
+        <section id="educational-hub">
+            <h2>Educational Hub</h2>
+            <p>Explore articles, tutorials, and resources to help make eco-friendly choices in daily life.</p>
+            <div class="education-content">
+                <div class="education-card">
+                    <h3>The Importance of Eco-Friendly Products</h3>
+                    <p>Learn why using eco-friendly products is essential for the planet.</p>
+                    <a href="educational_hub.html#importance-of-eco-friendly-products" class="cta-button">Read More</a>
+                </div>
+                <div class="education-card">
+                    <h3>How to Reduce Plastic Use In Daily Life</h3>
+                    <p>Discover practical steps to minimize waste in your daily routine.</p>
+                    <a href="educational_hub.html#reduce-waste" class="cta-button">Read More</a>
+                </div>
+                <div class="education-card">
+                    <h3>How to Compost at Home and Reduce Food Waste</h3>
+                    <p>Find a way to composting in an excellent way.</p>
+                    <a href="educational_hub.html#eco-friendly-alternatives" class="cta-button">Read More</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials">
+            <h2>What Our Customers Say</h2>
+            <div class="testimonial">
+                <p>"EcoShop’s products have transformed my daily routine. I feel great knowing I'm making eco-friendly choices!" - Ahmad Albab</p>
+            </div>
+            <div class="testimonial">
+                <p>"From groceries to accessories, everything is top quality and sustainably sourced." - Dr Strange</p>
+            </div>
+        </section>
+
+        <!-- Newsletter Section -->
+        <section id="newsletter">
+            <h2>Stay Updated</h2>
+            <p>Subscribe to our newsletter for eco-friendly tips and product updates.</p>
+            <form action="#">
+                <input type="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </section>
+
+        <!-- About and Contact Us Section -->
+        <section id="about-contact">
+            <div class="about-section">
+                <h2>About Us</h2>
+                <p>At EcoShop, we believe in creating a positive impact on the environment by offering a range of products made from sustainable materials and ethical practices.</p>
+            </div>
+            <div class="divider"></div>
+            <div class="contact-section">
+                <h2>Contact Us</h2>
+                <p>Have questions or need assistance? We'd love to hear from you! Reach out to us through any of the options below.</p>
+                <div class="contact-info">
+                    <p><strong>Email:</strong> support@ecoshop.com</p>
+                    <p><strong>Phone:</strong> 123 456-7890</p>
+                    <p><strong>Address:</strong> 123 Greenway, Eco City, Kuala Lumpur</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+     <!-- JavaScript for Slideshow -->
+     <script>
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let slides = document.getElementsByClassName("mySlides");
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}    
+            slides[slideIndex-1].style.display = "block";  
+            setTimeout(showSlides, 3000); // Change image every 3 seconds
+        }
+    </script>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 EcoShop. All rights reserved.</p>
+    </footer>
+</body>
+</html>

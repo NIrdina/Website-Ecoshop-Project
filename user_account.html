@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Register</title>
+    <style>
+        /* General Form Styling */
+        #user-account {
+            max-width: 350px;
+            margin: 0 auto;
+            padding: 15px;
+            background-color: #f1f8e9;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 { 
+            font-size: 20px;
+            color: #2e7d32;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .tab {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 15px; 
+        }
+
+        .tab button {
+            flex: 1;
+            padding: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            background-color: #e8eaf6;
+            border: none;
+            color: #6d4c41;
+            transition: background-color 0.3s;
+        }
+
+        .tab button.active {
+            border-bottom: 2px solid #4caf50;
+            background-color: #ffffff;
+            color: #2e7d32;
+        }
+
+        form {
+            display: none;
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 6px;
+        }
+
+        form.active {
+            display: block;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+
+        input[type="email"],
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin: 6px 0;
+            border: 1px solid #a5d6a7;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        input[type="email"]:focus,
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #4caf50;
+            outline: none;
+        }
+
+        button[type="submit"] {
+            background-color: #6d4c41;
+            color: #ffffff;
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #5d4037;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="user-account">
+        <h2>Login / Register</h2>
+        <div class="tab">
+            <button onclick="showForm('loginForm')" class="active" id="loginTab">Login</button>
+            <button onclick="showForm('registerForm')" id="registerTab">Register</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm" action="login.php" method="POST" class="active">
+            <label for="loginEmail">Email:</label>
+            <input type="email" id="loginEmail" name="email" required />
+
+            <label for="loginPassword">Password:</label>
+            <input type="password" id="loginPassword" name="password" required />
+
+            <button type="submit">Login</button>
+        </form>
+
+        <!-- Register Form -->
+        <form id="registerForm" action="register.php" method="POST">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required />
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required />
+
+            <button type="submit">Register</button>
+        </form>
+    </div>        
+
+    <script>
+        function showForm(formId) {
+            document.getElementById('loginForm').classList.remove('active');
+            document.getElementById('registerForm').classList.remove('active');
+            document.getElementById('loginTab').classList.remove('active');
+            document.getElementById('registerTab').classList.remove('active');
+
+            document.getElementById(formId).classList.add('active');
+            document.getElementById(formId === 'loginForm' ? 'loginTab' : 'registerTab').classList.add('active');
+        }
+    </script>
+</body>
+</html>

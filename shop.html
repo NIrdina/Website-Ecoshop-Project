@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoShop | Shop</title>
+    
+    <!-- Internal CSS -->
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f0; /* Light beige background */
+            color: #3b3b3b; /* Dark brown for text */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #4d804d; /* Dark green */
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        header .logo h1 {
+            margin: 0;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        header nav ul li {
+            margin: 0 15px;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        header nav ul li a:hover {
+            color: #d9d9d9; /* Light gray */
+        }
+
+        /* Main Shop Section */
+        main {
+            padding: 20px;
+        }
+
+        #shop h2 {
+            font-size: 30px;
+            color: #4d804d; /* Dark green */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #shop p {
+            font-size: 16px;
+            color: #3b3b3b;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        /* Shop Categories */
+        .shop-categories {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .shop-category {
+            background-color: #e5d3b3; /* Light brown */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        .shop-category h3 {
+            color: #4d804d; /* Dark green */
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        /* Shop Items */
+        .shop-items {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .shop-item {
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .shop-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .shop-item h4 {
+            font-size: 20px;
+            color: #4d804d; /* Dark green */
+            margin: 10px 0;
+        }
+
+        .shop-item p {
+            color: #3b3b3b; /* Dark brown */
+            font-size: 16px;
+        }
+
+        .shop-item h2 {
+            color: #4d804d; /* Dark green */
+            font-size: 22px;
+            margin: 10px 0;
+        }
+
+        .cta-button {
+            background-color: #4d804d; /* Dark green */
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            background-color: #3b6b3b; /* Darker green */
+        }
+
+        .message {
+            padding: 10px;
+            margin: 20px 0;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .error {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        /* Add to Cart Button Styles */
+button[type="submit"] {
+    background-color: #4d804d; /* Dark green */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s, transform 0.2s;
+    display: inline-block;
+    width: 100%;
+}
+
+button[type="submit"]:hover {
+    background-color: #3b6b3b; /* Darker green */
+    transform: scale(1.05); /* Slight scale effect */
+}
+
+button[type="submit"]:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(77, 128, 77, 0.7); /* Add a glow effect on focus */
+}
+
+/* Input Fields for Quantity */
+input[type="number"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 10px;
+    transition: border-color 0.3s;
+}
+
+input[type="number"]:focus {
+    border-color: #4d804d; /* Highlight border on focus */
+}
+
+/* Form Styling */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+    .shop-categories {
+        flex-direction: column;
+    }
+
+    .shop-category {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .shop-item {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+.shop-item img:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+/* Input Fields for Quantity */
+input[type="number"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px; /* Rounded corners */
+    font-size: 16px;
+    width: 90%;
+    margin-bottom: 10px;
+    background-color: #f9f9f9; /* Light background color */
+    transition: all 0.3s ease; /* Smooth transition for changes */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+input[type="number"]:focus {
+    border-color: #4d804d; /* Green border on focus */
+    background-color: #e5f4e5; /* Light green background on focus */
+    box-shadow: 0 0 10px rgba(77, 128, 77, 0.5); /* Glow effect on focus */
+}
+
+/* Hover effect */
+input[type="number"]:hover {
+    border-color: #4d804d; /* Border color changes on hover */
+}
+
+
+        /* About and Contact Us Section */
+        #about-contact {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #e5d3b3; /* Light brown */
+        }
+
+        .about-section, .contact-section {
+            width: 45%;
+        }
+
+        #about-contact h2 {
+            color: #4d804d; /* Dark green */
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        #about-contact p {
+            font-size: 16px;
+            color: #3b3b3b;
+        }
+
+        .divider {
+            height: 4px;
+            background-color: #4d804d; /* Dark green */
+            margin: 20px auto;
+            width: 90%;
+            border-radius: 2px;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #4d804d; /* Dark green */
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+    </style>
+
+      <!-- Add this script to show the pop-up message -->
+      <script>
+        // Check if status and message query parameters exist
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const status = urlParams.get('status');
+            const message = urlParams.get('message');
+
+            if (status && message) {
+                alert(message);  // Show pop-up with the message
+            }
+        }
+    </script>
+
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <h1>EcoShop</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="website.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="cart.html">Your Cart</a></li>
+                <li><a href="educational_hub.html">Education Hub</a></li>
+                <li><a href="purchase_history.html">Purchase History</a></li>
+                <li><a href="#about-contact">About Us</a></li>
+                <li><a href="#about-contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Shop Section -->
+    <main>
+        <section id="shop">
+            <h2>Shop Our Eco-Friendly Products</h2>
+            <p>Explore our selection of sustainable products that help you make a positive impact on the environment.</p>
+            
+            <div class="shop-categories">
+                <!-- Accessory Category -->
+                <div class="shop-category"> 
+                    <h3>Accessories</h3>    
+                    <div class="shop-items">
+                        <div class="shop-item">
+                            <img src="/website/reusable beg.jpg" width="275" height="183" alt="bag"/>
+                            <h4>Eco-Friendly Bag</h4>
+                            <p>Made from 100% recycled materials.</p>
+                            <h2>RM5.50</h2>
+                            <form data-id="1" data-name="Eco-Friendly Bag" data-price="5.50" class="add-to-cart-form" onsubmit="addToCart(event)">
+                                <input type="hidden" name="product_id" value="1">
+                                <label for="quantity-1">Quantity:</label>
+                                <input type="number" name="quantity" id="quantity-1" min="1" value="1">
+                                <button type="submit">Add to Cart</button>
+                            </form>                      
+                        </div>
+                        <div class="shop-item">
+                            <img src="/website/botol air.webp" width="225" height="225" alt="Reusable Water Bottle"/>
+                            <h4>Reusable Water Bottle</h4>
+                            <p>Keep yourself hydrated and reduce plastic waste.</p>
+                            <h2>RM12.99</h2>
+                            <form data-id="2" data-name="Reusable Water Bottle" data-price="12.99" class="add-to-cart-form" onsubmit="addToCart(event)">
+                                <input type="hidden" name="product_id" value="2">
+                                <label for="quantity">Quantity:</label>
+                                <input type="number" name="quantity" id="quantity-2" min="1" value="1">
+                                <button type="submit">Add to Cart</button>
+                            </form>
+                        </div>
+                        <div class="shop-item">
+                            <img src="/website/jam tangan.jpeg" width="225" height="225" alt="Eco-Conscious Watches"/>
+                            <h4>Eco-Conscious Watches</h4>
+                            <p>Timepieces crafted from sustainable wood or recycled materials, featuring natural straps.</p>
+                            <h2>RM39.99</h2>
+                            <form data-id="3" data-name="Eco-Conscious Watches" data-price="39.99" class="add-to-cart-form" onsubmit="addToCart(event)">
+                                <input type="hidden" name="product_id" value="3">
+                                <label for="quantity">Quantity:</label>
+                                <input type="number" name="quantity" id="quantity-3" min="1" value="1">
+                                <button type="submit">Add to Cart</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Groceries Category -->
+                <div class="shop-category">
+                    <h3>Groceries</h3>
+                    <div class="shop-items">
+                        <div class="shop-item">
+                            <img src="/website/sabun.webp" width="226" height="190" alt="organic soap"/>
+                            <h4>Organic Soap</h4>
+                            <p>All-natural ingredients, perfect for sensitive skin.</p>
+                            <h2>RM4.60</h2>
+                            <form data-id="4" data-name="Organic Soap" data-price="4.60" class="add-to-cart-form" onsubmit="addToCart(event)">
+                                <input type="hidden" name="product_id" value="4">
+                                <label for="quantity">Quantity:</label>
+                                <input type="number" name="quantity" id="quantity-4" min="1" value="1">
+                                <button type="submit">Add to Cart</button>
+                            </form>
+                        </div>
+                        <div class="shop-item">
+                            <img src="/website/straw stainless.jpg" width="225" height="200" alt=""/>
+                            <h4>Reusable Straw Set</h4>
+                            <p>Stainless steel straws with cleaning brush included.</p>
+                            <h2>RM3.00</h2>
+                            <form data-id="5" data-name="Reusable Straw Set" data-price="3.00" class="add-to-cart-form" onsubmit="addToCart(event)">
+                                <input type="hidden" name="product_id" value="5">
+                                <label for="quantity">Quantity:</label>
+                                <input type="number" name="quantity" id="quantity-5" min="1" value="1">
+                                <button type="submit">Add to Cart</button>
+                            </form>
+                        </div>
+                        <div class="shop-item">
+                            <img src="/website/reusable zip lock.webp" width="225" height="200" alt=""/>
+                            <h4>Reusable Food Storage Bags</h4>
+                            <p>Made from silicone or cloth for eco-conscious meal storage.</p>
+                            <h2>RM1.00</h2>
+                            <form data-id="6" data-name="Reusable Food Storage Bags" data-price="1.00" class="add-to-cart-form" onsubmit="addToCart(event)">
+                                <input type="hidden" name="product_id" value="6">
+                                <label for="quantity">Quantity:</label>
+                                <input type="number" name="quantity" id="quantity-6" min="1" value="1">
+                                <button type="submit">Add to Cart</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hardware Category -->
+                <div class="shop-category">
+                    <h3>Hardware</h3>
+                    <div class="shop-items">
+                        <div class="shop-item">
+                            <img src="/website/plug.jpg" width="200" height="220" alt="adapter"/>
+                            <h4>Smart Eco Adapters</h4>
+                            <p>Smart eco adapters can help to save money on the electricity bills.</p>
+                            <h2>RM7.50</h2>
+                            <form data-id="7" data-name="Smart Eco Adapters" data-price="7.50" class="add-to-cart-form" onsubmit="addToCart(event)">
+                                <input type="hidden" name="product_id" value="7">
+                                <label for="quantity">Quantity:</label>
+                                <input type="number" name="quantity" id="quantity-7" min="1" value="1">
+                                <button type="submit">Add to Cart</button>
+                            </form>
+                        </div>
+                        <div class="shop-item">
+                            <img src="/website/solar lantern.webp" width="224" height="224" alt="lantern"/>
+                            <h4>Solar-Powered Lantern</h4>
+                            <p>Rechargeable, eco-friendly lighting solution.</p>
+                            <h2>RM12.50</h2>
+                            <form data-id="8" data-name="Solar-Powered Lantern" data-price="12.50" class="add-to-cart-form" onsubmit="addToCart(event)">
+                                <input type="hidden" name="product_id" value="8">
+                                <label for="quantity">Quantity:</label>
+                                <input type="number" name="quantity" id="quantity-8" min="1" value="1">
+                                <button type="submit">Add to Cart</button>
+                            </form>
+                        </div>
+                        <div class="shop-item">
+                            <img src="/website/luggage.jpg" width="224" height="224" alt="lantern"/>
+                            <h4>Eco-Friendly Luggage</h4>
+                            <p>Sustainable, lightweight travel bags made from recycled materials.</p>
+                            <h2>RM99.50</h2>
+                            <form data-id="9" data-name="Eco-Friendly Luggage" data-price="99.50" class="add-to-cart-form" onsubmit="addToCart(event)">
+                                <input type="hidden" name="product_id" value="9">
+                                <label for="quantity">Quantity:</label>
+                                <input type="number" name="quantity" id="quantity-9" min="1" value="1">
+                                <button type="submit">Add to Cart</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+    
+        // Global addToCart function
+        function addToCart(event) {
+            event.preventDefault(); // Prevent default form submission
+            const form = event.target;
+            const productId = form.getAttribute('data-id');
+            const productName = form.getAttribute('data-name');
+            const productPrice = parseFloat(form.getAttribute('data-price'));
+            const quantityInput = form.querySelector('input[name="quantity"]'); // Get the quantity input field
+            const quantity = parseInt(quantityInput.value) || 1; // Default quantity to 1 if empty or invalid
+    
+            // Retrieve the current cart from localStorage
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    
+            // Check if the item already exists in the cart
+            const existingItemIndex = cart.findIndex(item => item.id === productId);
+    
+            if (existingItemIndex > -1) {
+                // Update quantity if item already exists in the cart
+                cart[existingItemIndex].quantity += quantity;
+            } else {
+                // Add new item to the cart
+                cart.push({
+                    id: productId,
+                    name: productName,
+                    price: productPrice,
+                    quantity: quantity
+                });
+            }
+    
+            // Save the updated cart back to localStorage
+            localStorage.setItem('cart', JSON.stringify(cart));
+    
+            // Display success message to user
+            alert(`${productName} has been added to your cart!`);
+    
+            
+        }
+    
+        // Function to show alert based on URL parameters
+        function showAlertFromUrl() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const status = urlParams.get('status');
+            const message = urlParams.get('message');
+        }
+
+        // Add this function to load the updated products
+        function loadUpdatedProducts() {
+            fetch('get_products.php')
+            .then(response => response.json())
+            .then(products => {
+            const tableBody = document.querySelector('#productTable tbody');
+            tableBody.innerHTML = '';
+            products.forEach(product => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${product.id}</td>
+                    <td><img src="${product.image_path}" alt="${product.name}" width="50"></td>
+                    <td>${product.name}</td>
+                    <td>${product.description}</td>
+                    <td>RM ${product.price}</td>
+                    <td>${product.category}</td>
+                    <td>
+                        <button onclick="editProduct(${product.id})">Edit</button>
+                        <button onclick="deleteProduct(${product.id})">Delete</button>
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        });
+}
+
+        
+    </script>
+
+    <!-- About and Contact Us Section -->
+    <section id="about-contact">
+        <div class="about-section">
+            <h2>About Us</h2>
+            <p>At EcoShop, we believe in creating a positive impact on the environment by offering a range of products made from sustainable materials and ethical practices.</p>
+        </div>
+        <div class="divider"></div> <!-- Divider Element -->
+        <div class="contact-section">
+            <h2>Contact Us</h2>
+            <p>Have questions or need assistance? We'd love to hear from you! Reach out to us through any of the options below.</p>
+            <div class="contact-info">
+                <p><strong>Email:</strong> support@ecoshop.com</p>
+                <p><strong>Phone:</strong> (123) 456-7890</p>
+                <p><strong>Address:</strong> 123 Greenway Drive, Eco City, Kuala Lumpur</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer style="background-color: #4d804d; color: white; text-align: center; padding: 10px 0;">
+        <p>&copy; 2024 EcoShop. All rights reserved.</p>
+    </footer>
+    
+</body>
+</html>
+
+

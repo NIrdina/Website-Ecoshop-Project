@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EcoShop Educational Hub - Learn more about sustainable living and eco-friendly practices.">
+    <title>EcoShop | Educational Hub</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            color: #3b3b3b; /* Dark brown for text */
+            background-color: #f5f5f0; /* Light beige background */
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #4d804d; /* Dark green */
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        header .logo h1 {
+            margin: 0;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        header nav ul li {
+            margin: 0 15px;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        header nav ul li a:hover {
+            color: #d9d9d9; /* Light gray */
+        }
+
+        /* Section Block Style */
+        .section-block {
+            background-color: #f0e6d6; /* Light brown/tan */
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .section-block:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .section-block h2 {
+            color: #4d804d; /* Dark green */
+            font-size: 24px;
+        }
+
+        .section-block p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* Divider Style */
+        .divider {
+            height: 4px;
+            background-color: #4d804d; /* Dark green */
+            margin: 20px auto;
+            width: 90%;
+            border-radius: 2px;
+        }
+
+        .sub-divider {
+            height: 2px;
+            background-color: #a57a4c; /* Medium brown */
+            margin: 15px 0;
+            width: 80%;
+            border-radius: 2px;
+        }
+
+        /* Article List Style */
+        .article-list .article-item {
+            background-color: #e5d3b3; /* Light brown */
+            padding: 15px;
+            border-left: 5px solid #4d804d; /* Dark green accent */
+            margin: 10px 0;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .article-list .article-item:hover {
+            background-color: #e0caa3;
+        }
+
+        /* FAQ Style */
+        .faq-list .faq-item {
+            background-color: #d9c9a5; /* Tan color for FAQ items */
+            padding: 10px;
+            border-left: 5px solid #4d804d;
+            margin: 10px 0;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .faq-list .faq-item:hover {
+            background-color: #d3c297;
+        }
+
+        /* Eco Tip Item Style */
+        .eco-tip-item h3 {
+            color: #4d804d; /* Dark green */
+            font-size: 20px;
+            margin-top: 0;
+        }
+
+        .eco-tip-item ol {
+            padding-left: 20px;
+        }
+
+        .eco-tip-item ol li {
+            margin-bottom: 10px;
+        }
+
+        /* Newsletter Form Style */
+        #newsletter form {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        #newsletter input[type="email"] {
+            padding: 8px;
+            margin-right: 10px;
+            border: 1px solid #a57a4c; /* Medium brown border */
+            border-radius: 4px;
+            width: 250px; /* Set a width for the input */
+            transition: border-color 0.3s;
+        }
+
+        #newsletter input[type="email"]:focus {
+            border-color: #4d804d; /* Dark green on focus */
+        }
+
+        #newsletter button {
+            background-color: #4d804d; /* Dark green button */
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px; /* Add margin above the button */
+            transition: background-color 0.3s;
+        }
+
+        #newsletter button:hover {
+            background-color: #3b6b3b; /* Darker green on hover */
+        }
+
+        /* About and Contact Section */
+        #about-contact {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #e5d3b3; /* Light brown */
+        }
+
+        .about-section, .contact-section {
+            width: 45%;
+            transition: background-color 0.3s;
+        }
+
+        .about-section:hover, .contact-section:hover {
+            background-color: #e0caa3;
+        }
+
+        .contact-info p {
+            margin: 5px 0;
+        }
+    </style>
+
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <h1>EcoShop</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="website.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="educational_hub.html">Education Hub</a></li>
+                <li><a href="#about-contact">About Us</a></li>
+                <li><a href="#about-contact">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Introduction Section -->
+        <section id="intro" class="section-block">
+            <h2>Welcome to the Educational Hub</h2>
+            <p>Explore articles, tutorials, and resources that can help you make eco-friendly choices in your daily life.</p>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Featured Articles Section -->
+        <section id="importance-of-eco-friendly-products" class="section-block">
+            <h2>The Importance of Using Eco-Friendly Products for Our Environment</h2>
+            <p>In today's world, environmental issues such as climate change, pollution, and resource depletion are increasingly urgent. One effective way to combat these challenges is by embracing eco-friendly products. These products are made from natural materials that minimize harm to the environment and promote sustainability. Here’s why using eco-friendly products is essential for our planet.</p>
+			
+            <div class="article-list">
+                <div class="article-item">
+                    <h3>1. Reduction of Environmental Impact</h3>
+                    <p>Eco-friendly products are designed to have a minimal impact on the environment. They are often biodegradable, meaning they break down naturally and do not contribute to landfill waste. By choosing products made from natural materials, we help reduce pollution and conserve resources.</p>
+                </div>
+                <div class="article-item">
+                    <h3>2. Sustainability</h3>
+                    <p>Natural materials, such as bamboo, hemp, and organic cotton, are renewable resources. Unlike synthetic materials, which are often derived from fossil fuels, natural materials can be replenished. By supporting sustainable practices, we contribute to the health of our ecosystems and ensure that resources remain available for future generations.</p>
+                </div>
+                <div class="article-item">
+                    <h3>3. Health Benefits</h3>
+                    <p>Many conventional products contain harmful chemicals that can affect our health and well-being. Eco-friendly products are typically free from toxic substances, making them safer for both consumers and the environment. By choosing natural alternatives, we can reduce our exposure to harmful chemicals and promote a healthier lifestyle.</p>
+                </div>
+                <div class="article-item">
+                    <h3>4. Conservation of Biodiversity</h3>
+                    <p>Using eco-friendly products helps preserve biodiversity. Sustainable farming and harvesting practices protect habitats and wildlife. When we support companies that prioritize environmental stewardship, we contribute to the preservation of ecosystems and the variety of life they support.</p>
+                </div>
+                <div class="article-item">
+                    <h3>5. Awareness and Education</h3>
+                    <p>By opting for eco-friendly products, we raise awareness about the importance of sustainability. Each choice we make sends a message to manufacturers and encourages them to adopt greener practices. This shift in consumer behavior can lead to broader changes in industries, promoting a culture of sustainability.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Eco-Friendly Tips and DIY Projects Section -->
+		
+            <h2>Eco-Friendly Tips and DIY Projects</h2>
+
+            <!-- How to Compost at Home -->
+		<section id="eco-friendly-alternatives" class="section-block">
+            <div class="eco-tip-item">
+                <h3>How to Compost at Home and Reduce Food Waste</h3>
+                <p>Composting is an excellent way to turn your kitchen scraps into nutrient-rich soil, helping reduce landfill waste and supporting a healthy garden. Follow these steps to start composting at home:</p>
+                <ol>
+                    <li><strong>Choose a Compost Bin:</strong> Select a bin that fits your space; it can be a store-bought compost bin or a DIY container made from wood or plastic.</li>
+                    <li><strong>Gather Compostable Materials:</strong> Use kitchen scraps like fruit and vegetable peels, coffee grounds, and eggshells. You can also add yard waste like grass clippings and leaves.</li>
+                    <li><strong>Layer Your Compost:</strong> Alternate between green materials (like food scraps) and brown materials (like dry leaves) for balanced composting.</li>
+                    <li><strong>Maintain Your Compost:</strong> Turn your compost pile regularly to aerate it and speed up decomposition.</li>
+                    <li><strong>Harvest Your Compost:</strong> After a few months, your compost will be ready to use in your garden.</li>
+                </ol>
+            </div>
+
+            <div class="sub-divider"></div>
+
+            <!-- Tips for Reducing Plastic Use -->
+			<section id="reduce-waste" class="section-block">
+            <div class="eco-tip-item">
+                <h3>10 Easy Ways to Reduce Plastic Use in Daily Life</h3>
+                <ol>
+                    <li>Use reusable bags for shopping.</li>
+                    <li>Carry a reusable water bottle.</li>
+                    <li>Avoid single-use cutlery and straws.</li>
+                    <li>Choose products with minimal packaging.</li>
+                    <li>Support brands that use eco-friendly materials.</li>
+                    <li>Buy in bulk to reduce packaging waste.</li>
+                    <li>Bring your own container for takeout food.</li>
+                    <li>Use beeswax wraps instead of plastic wrap.</li>
+                    <li>Opt for glass or metal containers for food storage.</li>
+                    <li>Educate others about the importance of reducing plastic waste.</li>
+                </ol>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- FAQs Section -->
+        <section id="faqs" class="section-block">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <h3>What are eco-friendly products?</h3>
+                    <p>Eco-friendly products are made from natural materials and designed to have a minimal impact on the environment.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Why should I choose eco-friendly products?</h3>
+                    <p>Choosing eco-friendly products helps reduce pollution, conserves resources, and promotes sustainable living.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>How can I make my home more eco-friendly?</h3>
+                    <p>You can start by reducing waste, using energy-efficient appliances, and incorporating sustainable practices like composting.</p>
+                </div>
+                <div class="faq-item">
+                    <h3>Are eco-friendly products more expensive?</h3>
+                    <p>While some eco-friendly products may have a higher upfront cost, they often save money in the long run through durability and efficiency.</p>
+                </div>
+            </div>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- Newsletter Subscription Section -->
+        <section id="newsletter" class="section-block">
+            <h2>Subscribe to Our Newsletter</h2>
+            <p>Stay updated on the latest eco-friendly tips and products by subscribing to our newsletter!</p>
+            <form>
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </section>
+
+        <div class="divider"></div>
+
+        <!-- About and Contact Section -->
+        <section id="about-contact" class="section-block">
+            <div class="about-section">
+                <h2>About Us</h2>
+                <p>At EcoShop, we believe in creating a positive impact on the environment by offering a range of products made from sustainable materials and ethical practices.</p>
+            </div>
+            <div class="contact-section">
+                <h2>Contact Us</h2>
+                <div class="contact-info">
+                    <p>Email: contact@ecoshop.com</p>
+                    <p>Phone: (123) 456-7890</p>
+                    <p>Address: 123 Eco St, Green City, Kuala Lumpur</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer style="background-color: #4d804d; color: white; text-align: center; padding: 10px 0;">
+        <p>&copy; 2024 EcoShop. All rights reserved.</p>
+    </footer>
+</body>
+</html>

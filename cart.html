@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoShop | Your Cart</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f0;
+            color: #3b3b3b;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #4d804d;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        header .logo h1 {
+            margin: 0;
+        }
+
+        header nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        header nav ul li {
+            margin: 0 15px;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        header nav ul li a:hover {
+            color: #d9d9d9;
+        }
+
+        /* Cart Section */
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 30px;
+            color: #4d804d;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px;
+            background-color: #e5d3b3;
+            border-radius: 8px;
+            margin: 10px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .cart-item p {
+            margin: 0;
+        }
+
+        .actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .remove-button,
+        .quantity-button {
+            background-color: #4d804d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .remove-button:hover {
+            background-color: #c9302c;
+        }
+
+        .quantity-button:hover {
+            background-color: #3b6b3b;
+        }
+
+        .quantity-display {
+            font-size: 18px;
+        }
+
+        .total-price,
+        .shipping-cost,
+        .final-total {
+            font-size: 20px;
+            font-weight: bold;
+            color: #4d804d;
+            margin-top: 10px;
+        }
+
+        .cta-button {
+            background-color: #4d804d;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            text-decoration: none;
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: #3b6b3b;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <h1>EcoShop</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="website.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="cart.html">Your Cart</a></li>
+                <li><a href="educational_hub.html">Education Hub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Cart Section -->
+    <main>
+        <h2>Your Cart</h2>
+        <div id="cart-items">
+            <!-- Cart items will be dynamically inserted here -->
+        </div>
+        <p class="total-price" id="total-price">Total: RM0.00</p>
+        <p class="shipping-cost" id="shipping-cost">Shipping: RM10.00</p>
+        <p class="final-total" id="final-total">Final Total: RM10.00</p>
+        <button class="cta-button" onclick="checkout()">Proceed to Checkout</button>
+    </main>
+
+    <script>
+        const SHIPPING_COST = 2.00;
+
+        // Display cart items on the cart page
+        function loadCart() {
+            const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            const cartItemsContainer = document.getElementById('cart-items');
+            let total = 0;
+            cartItemsContainer.innerHTML = '';
+
+            if (cartItems.length === 0) {
+                cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
+                document.getElementById('total-price').textContent = 'Total: RM0.00';
+                document.getElementById('shipping-cost').textContent = `Shipping: RM${SHIPPING_COST.toFixed(2)}`;
+                document.getElementById('final-total').textContent = `Final Total: RM${SHIPPING_COST.toFixed(2)}`;
+                return;
+            }
+
+            cartItems.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+
+                const cartItemElement = document.createElement('div');
+                cartItemElement.classList.add('cart-item');
+                cartItemElement.innerHTML = `
+                    <p>${item.name} - RM${item.price.toFixed(2)}</p>
+                    <div class="actions">
+                        <button class="quantity-button" onclick="updateQuantity(${index}, -1)">-</button>
+                        <span class="quantity-display">${item.quantity}</span>
+                        <button class="quantity-button" onclick="updateQuantity(${index}, 1)">+</button>
+                        <button class="remove-button" onclick="removeFromCart(${index})">Remove</button>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(cartItemElement);
+            });
+
+            const finalTotal = total + SHIPPING_COST;
+            document.getElementById('total-price').textContent = `Total: RM${total.toFixed(2)}`;
+            document.getElementById('shipping-cost').textContent = `Shipping: RM${SHIPPING_COST.toFixed(2)}`;
+            document.getElementById('final-total').textContent = `Final Total: RM${finalTotal.toFixed(2)}`;
+        }
+
+        // Update item quantity (increase or decrease)
+        function updateQuantity(index, change) {
+            let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cartItems[index].quantity + change > 0) {
+                cartItems[index].quantity += change;
+                localStorage.setItem('cart', JSON.stringify(cartItems));
+                loadCart(); // Refresh the cart display
+            }
+        }
+
+        // Remove item from cart
+        function removeFromCart(index) {
+            let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+            cartItems.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+            loadCart(); // Refresh the cart display
+            alert('Item removed from cart.');
+        }
+
+        // Checkout function
+        function checkout() {
+            alert('Proceeding to checkout...');
+            // Save cart to sessionStorage for the receipt page
+            sessionStorage.setItem('cart', JSON.stringify(JSON.parse(localStorage.getItem('cart'))));
+            localStorage.removeItem('cart'); // Clear the cart after saving to sessionStorage
+            window.location.href = 'payment_receipt.html'; // Redirect to the payment receipt page
+        }
+        
+        // Load cart items on page load
+        window.onload = loadCart;
+    </script>
+</body>
+</html>

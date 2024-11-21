@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login / Register</title>
+    <style>
+        /* General Form Styling */
+        #admin-account {
+            max-width: 350px;
+            margin: 0 auto;
+            padding: 15px;
+            background-color: #f1f8e9;
+            border-radius: 8px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 { 
+            font-size: 20px;
+            color: #2e7d32;
+            text-align: center;
+            margin-bottom: 15px;
+        }
+
+        .tab {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 15px; 
+        }
+
+        .tab button {
+            flex: 1;
+            padding: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            background-color: #e8eaf6;
+            border: none;
+            color: #6d4c41;
+            transition: background-color 0.3s;
+        }
+
+        .tab button.active {
+            border-bottom: 2px solid #4caf50;
+            background-color: #ffffff;
+            color: #2e7d32;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        form {
+            display: none;
+            background-color: #ffffff;
+            padding: 15px;
+            border-radius: 6px;
+        }
+
+        form.active {
+            display: block;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+
+        input[type="email"],
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin: 6px 0;
+            border: 1px solid #a5d6a7;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        input[type="email"]:focus,
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #4caf50;
+            outline: none;
+        }
+
+        button[type="submit"] {
+            background-color: #6d4c41;
+            color: #ffffff;
+            padding: 8px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #5d4037;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="admin-account">
+        <h2>Admin Login / Register</h2>
+        <div class="tab">
+            <button onclick="showForm('adminLoginForm')" class="active" id="adminLoginTab">Login</button>
+            <button onclick="showForm('adminRegisterForm')" id="adminRegisterTab">Register</button>
+        </div>
+
+        <!-- Admin Login Form -->
+        <form id="adminLoginForm" action="login_admin.php" method="POST" class="active">
+            <label for="adminLoginEmail">Email:</label>
+            <input type="email" id="adminLoginEmail" name="email" required />
+
+            <label for="adminLoginPassword">Password:</label>
+            <input type="password" id="adminLoginPassword" name="password" required />
+
+            <button type="submit">Login</button>
+        </form>
+
+        <!-- Admin Register Form -->
+        <form id="adminRegisterForm" action="register_admin.php" method="POST">
+            <label for="adminEmail">Email:</label>
+            <input type="email" id="adminEmail" name="email" required />
+
+            <label for="adminUsername">Username:</label>
+            <input type="text" id="adminUsername" name="username" required />
+
+            <label for="adminPassword">Password:</label>
+            <input type="password" id="adminPassword" name="password" required />
+
+            <button type="submit">Register</button>
+        </form>
+    </div>        
+
+    <script>
+        function showForm(formId) {
+            document.getElementById('adminLoginForm').classList.remove('active');
+            document.getElementById('adminRegisterForm').classList.remove('active');
+            document.getElementById('adminLoginTab').classList.remove('active');
+            document.getElementById('adminRegisterTab').classList.remove('active');
+
+            document.getElementById(formId).classList.add('active');
+            document.getElementById(formId === 'adminLoginForm' ? 'adminLoginTab' : 'adminRegisterTab').classList.add('active');
+        }
+    </script>
+</body>
+</html>
